@@ -9,6 +9,7 @@ public class ToolBar : MonoBehaviour
     public Animator animator;
     public GameObject item;
     public int maxHits = -1;
+    public GameObject manager;
 
     private bool animating;
 
@@ -17,6 +18,10 @@ public class ToolBar : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !animating && maxHits != 0)
         {
             Hit();
+            if(item != null && item.name == "Coin 1")
+            {
+                manager.GetComponent<gamesystem>().Add(1, 200);
+            }
 
         }
     }

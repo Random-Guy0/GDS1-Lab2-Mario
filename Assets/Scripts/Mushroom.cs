@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
+    public GameObject manager;
     // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine(Animate());
+        manager = GameObject.Find("GameManager");
     }
 
     private IEnumerator Animate()
@@ -46,8 +48,24 @@ public class Mushroom : MonoBehaviour
         boxCollider.enabled = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            switch(gameObject.tag)
+            {
+                case "RedMushroom":
+                    manager.GetComponent<gamesystem>().Add(0,200);
+                    break;
+                case "GreenMushroom":
+                    manager.GetComponent<gamesystem>().Add(0, 1000);
+                    break;
+                case "Star":
+                    manager.GetComponent<gamesystem>().Add(0, 1000);
+                    break;
+            }
+            Destroy(gameObject);
+            //PowerUp
+        }
     }
 }
