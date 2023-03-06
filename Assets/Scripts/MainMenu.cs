@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject OnePlayerButton;
+    public GameObject TwoPlayerButton;
+
     public void PlayGame()
     {
         //Makes it so once the button is pressed, it will play the next scene in order
