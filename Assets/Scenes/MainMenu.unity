@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 349723606}
   - component: {fileID: 349723609}
   m_Layer: 5
-  m_Name: 1 Player Game Button
+  m_Name: OnePlayerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,6 +731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ac0167ebd39644e98f76e2de1f7ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnePlayerButton: {fileID: 0}
+  TwoPlayerButton: {fileID: 0}
 --- !u!1 &440858807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1173,7 @@ GameObject:
   - component: {fileID: 1130658469}
   - component: {fileID: 1130658468}
   m_Layer: 5
-  m_Name: 2 Player Game Button
+  m_Name: TwoPlayerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
