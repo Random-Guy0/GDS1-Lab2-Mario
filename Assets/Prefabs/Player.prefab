@@ -51,6 +51,9 @@ MonoBehaviour:
   walkMaxSpeed: 3
   walkSpeedIncreaseFactor: 3.5
   walkSpeedDecreaseFactor: 3
+  sprintMaxSpeed: 7
+  sprintSpeedIncreaseFactor: 5
+  sprintSpeedDecreaseFactor: 5
   jumpVelocity: 4
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
@@ -112,6 +115,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bdcbd5fd-fcaf-4e4e-855e-1078b2386532
     m_ActionName: Player/Jump[/Keyboard/w,/Keyboard/upArrow,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8620382187820494171}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SprintAndAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8af16430-2ab7-478a-a835-b461007c3621
+    m_ActionName: Player/Sprint/Ability[/Keyboard/shift,/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

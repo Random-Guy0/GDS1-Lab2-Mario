@@ -11,12 +11,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkSpeedIncreaseFactor;
     [SerializeField] private float walkSpeedDecreaseFactor;
 
+    [SerializeField] private float sprintMaxSpeed;
+    [SerializeField] private float sprintSpeedIncreaseFactor;
+    [SerializeField] private float sprintSpeedDecreaseFactor;
+
     [SerializeField] private float jumpVelocity;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private float lowJumpMultiplier;
     [SerializeField] private Rigidbody2D rb;
-    
+
+    private float maxSpeed;
     private float currentSpeed;
+    private float currentSpeedIncreaseFactor;
+    private float currentSpeedDecreaseFactor;
     
     private float moveDir = 0.0f;
     private float previousMoveDir = 0.0f;
@@ -24,7 +31,14 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     private bool currentlyJumping = false;
     private bool jumpRequest = false;
-    
+
+    private void Start()
+    {
+        maxSpeed = walkMaxSpeed;
+        currentSpeedIncreaseFactor = walkSpeedIncreaseFactor;
+        currentSpeedDecreaseFactor = walkSpeedDecreaseFactor;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDir = context.ReadValue<float>();
@@ -40,20 +54,24 @@ public class PlayerController : MonoBehaviour
         if (moveDir != 0.0f)
         {
             previousMoveDir = moveDir;
-            if (currentSpeed != walkMaxSpeed)
+            if (currentSpeed < maxSpeed)
             {
-                currentSpeed += walkSpeedIncreaseFactor * Time.deltaTime * moveDir;
-                if (Mathf.Abs(currentSpeed) > walkMaxSpeed)
+                currentSpeed += currentSpeedIncreaseFactor * Time.deltaTime * moveDir;
+                if (Mathf.Abs(currentSpeed) > maxSpeed)
                 {
-                    currentSpeed = walkMaxSpeed * moveDir;
+                    currentSpeed = maxSpeed * moveDir;
                 }
+            }
+            else if (currentSpeed > maxSpeed)
+            {
+                currentSpeed -= currentSpeedDecreaseFactor * Time.deltaTime * moveDir;
             }
         }
         else
         {
             if (currentSpeed != 0.0f)
             {
-                currentSpeed -= walkSpeedDecreaseFactor * Time.deltaTime * previousMoveDir;
+                currentSpeed -= currentSpeedDecreaseFactor * Time.deltaTime * previousMoveDir;
                 if ((previousMoveDir > 0 && currentSpeed < 0) || (previousMoveDir < 0 && currentSpeed > 0))
                 {
                     currentSpeed = 0.0f;
@@ -110,6 +128,24 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.gravityScale = 1f;
+        }
+    }
+
+    public void SprintAndAbility(InputAction.CallbackContext context)
+    {
+        //start sprinting/shoot fireball
+        if (context.performed)
+        {
+            maxSpeed = sprintMaxSpeed;
+            currentSpeedIncreaseFactor = sprintSpeedIncreaseFactor;
+            currentSpeedDecreaseFactor = sprintSpeedDecreaseFactor;
+        }
+        //stop sprinting
+        else if (context.canceled)
+        {
+            maxSpeed = walkMaxSpeed;
+            currentSpeedIncreaseFactor = walkSpeedIncreaseFactor;
+            currentSpeedDecreaseFactor = walkSpeedDecreaseFactor;
         }
     }
 }
