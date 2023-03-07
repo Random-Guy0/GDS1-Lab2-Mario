@@ -32,11 +32,15 @@ public class PlayerController : MonoBehaviour
     private bool currentlyJumping = false;
     private bool jumpRequest = false;
 
+    private Camera mainCamera;
+
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
         currentSpeedIncreaseFactor = walkSpeedIncreaseFactor;
         currentSpeedDecreaseFactor = walkSpeedDecreaseFactor;
+        
+        mainCamera = Camera.main;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -81,7 +85,15 @@ public class PlayerController : MonoBehaviour
         
         Vector3 newPos = transform.position;
         newPos.x += currentSpeed * Time.deltaTime;
-        transform.position = newPos;
+
+        if (mainCamera.WorldToViewportPoint(Vector3.right * (newPos.x - 0.5f)).x >= 0.0)
+        {
+            transform.position = newPos;
+        }
+        else
+        {
+            currentSpeed = 0;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
