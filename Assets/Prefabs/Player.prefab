@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8620382187820494172}
   - component: {fileID: 8620382187820494171}
   - component: {fileID: 1895605330624230674}
+  - component: {fileID: 7753761021044408278}
   - component: {fileID: 8620382187820494170}
   - component: {fileID: 7600503334475721287}
   - component: {fileID: 3898659671408187985}
@@ -73,6 +74,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 3898659671408187985}
   lives: 3
+--- !u!114 &7753761021044408278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8620382187820494169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4862fc8e8713f41af960520c373a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 1895605330624230674}
 --- !u!114 &8620382187820494170
 MonoBehaviour:
   m_ObjectHideFlags: 0
