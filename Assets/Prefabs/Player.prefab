@@ -62,6 +62,8 @@ MonoBehaviour:
   rb: {fileID: 7600503334475721287}
   playerStats: {fileID: 1895605330624230674}
   playerCollider: {fileID: 3898659671408187985}
+  fireball: {fileID: 8745895086067207334, guid: 8fc6a5048b8e4d54bad5c07dbfc2c9fb, type: 3}
+  fireballDelay: 2
 --- !u!114 &1895605330624230674
 MonoBehaviour:
   m_ObjectHideFlags: 0
