@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        powerupState = PowerupState.Small;
+        powerupState = PowerupState.Flower;
     }
 
     public void OneUp()

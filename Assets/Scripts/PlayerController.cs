@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private GameObject fireball;
+    [SerializeField] private float fireballDelay;
 
     private float maxSpeed;
     private float currentSpeed;
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     private Camera mainCamera;
 
+    private int fireballCount = 0;
+
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
@@ -51,6 +55,19 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDir = context.ReadValue<float>();
+
+        if (moveDir > 0)
+        {
+            Vector3 rotation = transform.rotation.eulerAngles;
+            rotation.y = 0;
+            transform.rotation = Quaternion.Euler(rotation);
+        }
+        else if (moveDir < 0)
+        {
+            Vector3 rotation = transform.rotation.eulerAngles;
+            rotation.y = 180;
+            transform.rotation = Quaternion.Euler(rotation);
+        }
     }
     
     private void Update()
@@ -158,6 +175,13 @@ public class PlayerController : MonoBehaviour
         //start sprinting/shoot fireball
         if (context.performed)
         {
+            if (playerStats.GetPowerupState() == PowerupState.Flower && fireballCount < 3)
+            {
+                Instantiate(fireball, transform.position, Quaternion.identity);
+                fireballCount++;
+                Invoke("RefreshFireball", fireballDelay);
+            }
+            
             maxSpeed = sprintMaxSpeed;
             currentSpeedIncreaseFactor = sprintSpeedIncreaseFactor;
             currentSpeedDecreaseFactor = sprintSpeedDecreaseFactor;
@@ -169,6 +193,11 @@ public class PlayerController : MonoBehaviour
             currentSpeedIncreaseFactor = walkSpeedIncreaseFactor;
             currentSpeedDecreaseFactor = walkSpeedDecreaseFactor;
         }
+    }
+
+    private void RefreshFireball()
+    {
+        fireballCount--;
     }
 
     public void Crouch(InputAction.CallbackContext context)
