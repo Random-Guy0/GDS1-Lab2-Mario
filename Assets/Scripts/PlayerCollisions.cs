@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerCollisions : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private PlayerController playerController;
     
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -17,7 +18,7 @@ public class PlayerCollisions : MonoBehaviour
             }
             else
             {
-                //bounce
+                playerController.BounceOnEnemy();
             }
         }
         else if (col.gameObject.CompareTag("Powerup"))

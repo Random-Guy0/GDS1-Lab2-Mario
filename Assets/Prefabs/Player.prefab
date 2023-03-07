@@ -60,6 +60,8 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   rb: {fileID: 7600503334475721287}
+  playerStats: {fileID: 1895605330624230674}
+  playerCollider: {fileID: 3898659671408187985}
 --- !u!114 &1895605330624230674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 1895605330624230674}
+  playerController: {fileID: 8620382187820494171}
 --- !u!114 &8620382187820494170
 MonoBehaviour:
   m_ObjectHideFlags: 0

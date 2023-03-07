@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier;
     [SerializeField] private Rigidbody2D rb;
 
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private BoxCollider2D playerCollider;
+
     private float maxSpeed;
     private float currentSpeed;
     private float currentSpeedIncreaseFactor;
@@ -31,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     private bool currentlyJumping = false;
     private bool jumpRequest = false;
+
+    private bool crouching = false;
 
     private Camera mainCamera;
 
@@ -55,6 +60,11 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        if (crouching && canJump)
+        {
+            moveDir = 0;
+        }
+        
         if (moveDir != 0.0f)
         {
             previousMoveDir = moveDir;
@@ -165,11 +175,34 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            //start crouch
+            if (playerStats.GetPowerupState() > 0)
+            {
+                crouching = true;
+                playerCollider.size = Vector2.one;
+                playerCollider.offset = Vector2.zero;
+            }
         }
         else if (context.canceled)
         {
-            //end crouch
+            if (crouching)
+            {
+                crouching = false;
+                playerCollider.size = new Vector2(1, 2);
+                playerCollider.offset = new Vector2(0, 0.5f);
+            }
+        }
+    }
+
+    public void BounceOnEnemy()
+    {
+        canJump = false;
+        if (currentlyJumping)
+        {
+            jumpRequest = true;
+        }
+        else
+        {
+            rb.AddForce(Vector2.up * (jumpVelocity / 2.0f), ForceMode2D.Impulse);
         }
     }
 }

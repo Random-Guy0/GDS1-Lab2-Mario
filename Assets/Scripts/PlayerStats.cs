@@ -60,6 +60,11 @@ public class PlayerStats : MonoBehaviour
             playerCollider.offset = Vector2.zero;
         }
     }
+
+    public PowerupState GetPowerupState()
+    {
+        return powerupState;
+    }
 }
 
 public enum PowerupState
