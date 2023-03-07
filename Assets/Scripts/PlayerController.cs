@@ -148,4 +148,16 @@ public class PlayerController : MonoBehaviour
             currentSpeedDecreaseFactor = walkSpeedDecreaseFactor;
         }
     }
+
+    public void Crouch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //start crouch
+        }
+        else if (context.canceled)
+        {
+            //end crouch
+        }
+    }
 }
