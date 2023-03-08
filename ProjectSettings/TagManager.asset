@@ -10,6 +10,8 @@ TagManager:
   - Coin
   - Enemy
   - Death
+  - Map
+  - Pipe
   layers:
   - Default
   - TransparentFX
