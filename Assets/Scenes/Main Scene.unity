@@ -14180,18 +14180,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: jumpVelocity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: walkMaxSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: sprintMaxSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8620382187820494172, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
       propertyPath: m_RootOrder
       value: 9
