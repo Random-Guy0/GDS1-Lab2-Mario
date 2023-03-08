@@ -127,12 +127,15 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.started && canJump)
+        if (context.started)
         {
             currentlyJumping = true;
-            canJump = false;
-            jumpRequest = true;
-            AudioSource.PlayClipAtPoint(jumpSoundSmall, transform.position);
+            if (canJump)
+            {
+                canJump = false;
+                jumpRequest = true;
+                AudioSource.PlayClipAtPoint(jumpSoundSmall, transform.position);
+            }
         }
         else if (context.canceled)
         {
