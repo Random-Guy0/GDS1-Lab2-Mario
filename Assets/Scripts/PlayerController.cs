@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -46,6 +47,12 @@ public class PlayerController : MonoBehaviour
     private float updatedPos;
 
     public AudioClip jumpSoundSmall;
+    public Animator animator;
+
+    public int statement = 1;
+    public AnimatorController small;
+    public AnimatorController large;
+    public AnimatorController fire;
 
     private void Start()
     {
@@ -73,10 +80,15 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(rotation);
         }
     }
-    
+
+
+
     private void Update()
     {
         Move();
+        animator.SetFloat("Speed", Mathf.Abs(moveDir));
+        animator.SetFloat("BigSpeed", Mathf.Abs(moveDir));
+        animator.SetFloat("FireSpeed", Mathf.Abs(moveDir));
     }
 
     private void Move()
@@ -135,6 +147,9 @@ public class PlayerController : MonoBehaviour
                 canJump = false;
                 jumpRequest = true;
                 AudioSource.PlayClipAtPoint(jumpSoundSmall, transform.position);
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("BigJump", true);
+                animator.SetBool("FireJump", true);
             }
         }
         else if (context.canceled)
@@ -142,6 +157,7 @@ public class PlayerController : MonoBehaviour
             currentlyJumping = false;
         }
     }
+
 
     private void FixedUpdate()
     {
@@ -175,6 +191,9 @@ public class PlayerController : MonoBehaviour
         if(bottom)
         {
             canJump = true;
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("BigJump", false);
+            animator.SetBool("FireJump", false);
         }
     }
 
