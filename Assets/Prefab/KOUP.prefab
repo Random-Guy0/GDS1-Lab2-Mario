@@ -190,7 +190,7 @@ Transform:
   - {fileID: 598150906994587779}
   - {fileID: 598150906819499609}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &598150907257335171
 SpriteRenderer:
@@ -212,7 +212,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7c5ad74ef1759984484f3a686c785c95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2143946040, guid: 860c0fbf69d6c0f40a010a45809a59c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d6fac50266ec6e41afbdca9ccf58b78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -260,11 +260,12 @@ MonoBehaviour:
   walkSpeed: 1
   shellSpeed: 2
   RespawnTime: 5
-  walkColour: {r: 1, g: 0.8470589, b: 0, a: 1}
-  shellColour: {r: 0.2566323, g: 0.8018868, b: 0, a: 1}
+  walkColour: {fileID: 21300000, guid: 2d6fac50266ec6e41afbdca9ccf58b78, type: 3}
+  shellColour: {fileID: 21300000, guid: 4ee31e61f0fb64d48afa91f03cdd96e6, type: 3}
   lm:
     serializedVersion: 2
     m_Bits: 55
+  deathEffect: {fileID: 3571388264331059245, guid: d63917b5c39fb414b9bd45f76a1027fc, type: 3}
   fireDeathEffect: {fileID: 3571388264331059245, guid: c6e7ff64a9e24c645af51e3f61ee9e75, type: 3}
 --- !u!61 &598150907257335180
 BoxCollider2D:
@@ -300,9 +301,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.009928942, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.0875, y: 0.0875, z: 0.1375, w: 0.0875}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.4375}
+    oldSize: {x: 1, y: 1.35}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
