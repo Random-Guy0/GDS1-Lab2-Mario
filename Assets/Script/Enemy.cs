@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour
                 speed = -speed;
             }
         }
-        if (collision.gameObject.name == "KOUP")
+        if (collision.gameObject.name == "KOUP" && collision.gameObject.GetComponent<Enemy2>().isShell)
         {
             Damage(2);
         }

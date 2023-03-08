@@ -23,6 +23,7 @@ public class Enemy2 : MonoBehaviour
     SpriteRenderer sr;
     bool hitdir;
     public Animator animator;
+    public bool isShell = false;
    
     // Start is called before the first frame update
     void Start()
@@ -102,11 +103,13 @@ public class Enemy2 : MonoBehaviour
         if (shell)
         {
             animator.SetBool("Shell", true);
+            isShell = true;
             curSpeed = 0;
         }
         else
         {
             animator.SetBool("Shell", false);
+            isShell = false;
             curSpeed = -walkSpeed;
         }
     }
