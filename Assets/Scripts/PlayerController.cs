@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private int fireballCount = 0;
 
+    public Animator animator;
+
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
@@ -69,10 +71,13 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(rotation);
         }
     }
-    
+
+
+
     private void Update()
     {
         Move();
+        animator.SetFloat("Speed", Mathf.Abs(moveDir));
     }
 
     private void Move()
@@ -130,12 +135,14 @@ public class PlayerController : MonoBehaviour
             currentlyJumping = true;
             canJump = false;
             jumpRequest = true;
+            animator.SetBool("IsJumping", true);
         }
         else if (context.canceled)
         {
             currentlyJumping = false;
         }
     }
+
 
     private void FixedUpdate()
     {
@@ -164,6 +171,7 @@ public class PlayerController : MonoBehaviour
         if(bottom)
         {
             canJump = true;
+            animator.SetBool("IsJumping", false);
         }
     }
 
