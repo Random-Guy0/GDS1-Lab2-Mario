@@ -15,7 +15,7 @@ public class ToolBar : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !animating && maxHits != 0)
+        if (collision.gameObject.CompareTag("Player") && !animating && maxHits != 0 && collision.gameObject.transform.position.y < gameObject.transform.position.y)
         {
             Hit();
             if(item != null && item.name == "Coin 1")

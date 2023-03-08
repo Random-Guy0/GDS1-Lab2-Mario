@@ -15,7 +15,10 @@ public class Count : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!firstTouch)
+        {
+            GetComponent<Collider>().enabled = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,7 +32,7 @@ public class Count : MonoBehaviour
                 {
                     score += (i + 1) * 700;
                 }
-                Debug.Log(score);
+                manager.GetComponent<gamesystem>().Add(0, score);
                 firstTouch = false;
             }
         }
