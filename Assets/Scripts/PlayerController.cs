@@ -201,12 +201,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (transform.eulerAngles.y != 0)
                 {
-                    GameObject newFireball = Instantiate(fireball, new Vector3(transform.position.x - 1.05f, transform.position.y, transform.position.z), Quaternion.identity);
+                    GameObject newFireball = Instantiate(fireball, new Vector3(transform.position.x - 1.5f, transform.position.y, transform.position.z), Quaternion.identity);
                     newFireball.GetComponent<FireballController>().SetDirection(-1.0f);
                 }
                 else
                 {
-                    GameObject newFireball = Instantiate(fireball, new Vector3(transform.position.x + 1.05f, transform.position.y, transform.position.z), Quaternion.identity);
+                    GameObject newFireball = Instantiate(fireball, new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z), Quaternion.identity);
                     newFireball.GetComponent<FireballController>().SetDirection(1.0f);
                 }
                 fireballCount++;
