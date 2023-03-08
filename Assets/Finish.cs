@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
+    public GameObject Text;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,9 @@ public class Finish : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Application.Quit();
+        Time.timeScale = 0;
+        Debug.Log("Finish");
+        Text.SetActive(true);
     }
 }
