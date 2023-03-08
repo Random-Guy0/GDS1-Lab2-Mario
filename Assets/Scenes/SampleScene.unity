@@ -1421,7 +1421,7 @@ PrefabInstance:
     - target: {fileID: 598150907257335183, guid: aef74450c6d1fee4a81940990b487ae7, type: 3}
       propertyPath: fireDeathEffect
       value: 
-      objectReference: {fileID: 3571388264331059245, guid: d63917b5c39fb414b9bd45f76a1027fc, type: 3}
+      objectReference: {fileID: 3571388264331059245, guid: c6e7ff64a9e24c645af51e3f61ee9e75, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1438,7 +1438,7 @@ PrefabInstance:
     - target: {fileID: 8847809700964003961, guid: 3dc8b496f50e8624fab4e691ae590040, type: 3}
       propertyPath: fireDeathEffect
       value: 
-      objectReference: {fileID: 3571388264331059245, guid: d63917b5c39fb414b9bd45f76a1027fc, type: 3}
+      objectReference: {fileID: 3571388264331059245, guid: c6e7ff64a9e24c645af51e3f61ee9e75, type: 3}
     - target: {fileID: 8847809700964003961, guid: 3dc8b496f50e8624fab4e691ae590040, type: 3}
       propertyPath: jumpDeathEffect
       value: 

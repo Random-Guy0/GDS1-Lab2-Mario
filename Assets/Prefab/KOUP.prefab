@@ -189,7 +189,7 @@ Transform:
   - {fileID: 598150906994587779}
   - {fileID: 598150906819499609}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &598150907257335171
 SpriteRenderer:
@@ -264,7 +264,7 @@ MonoBehaviour:
   lm:
     serializedVersion: 2
     m_Bits: 55
-  fireDeathEffect: {fileID: 3571388264331059245, guid: d63917b5c39fb414b9bd45f76a1027fc, type: 3}
+  fireDeathEffect: {fileID: 3571388264331059245, guid: c6e7ff64a9e24c645af51e3f61ee9e75, type: 3}
 --- !u!61 &598150907257335180
 BoxCollider2D:
   m_ObjectHideFlags: 0
