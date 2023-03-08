@@ -17,7 +17,7 @@ public class Count : MonoBehaviour
     {
         if (!firstTouch)
         {
-            GetComponent<Collider>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 
