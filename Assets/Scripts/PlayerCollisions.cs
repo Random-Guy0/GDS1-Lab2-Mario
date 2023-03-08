@@ -12,7 +12,12 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            if (transform.position.y <= col.transform.position.y)
+            Vector3 contactPoint = col.GetContact(0).point;
+            Vector3 center = col.otherCollider.bounds.center;
+            
+            bool bottom = contactPoint.y < center.y;
+            
+            if (!bottom)
             {
                 playerStats.TakeDamage();
             }
@@ -21,17 +26,25 @@ public class PlayerCollisions : MonoBehaviour
                 playerController.BounceOnEnemy();
             }
         }
-        else if (col.gameObject.CompareTag("Powerup"))
+        else if (col.gameObject.CompareTag("RedMushroom"))
         {
             playerStats.CollectPowerup();
         }
-        else if (col.gameObject.CompareTag("Block") && transform.position.y < col.transform.position.y)
+        /*else if (col.gameObject.CompareTag("Block") && transform.position.y < col.transform.position.y)
         {
             //hit block
-        }
+        }*/
         else if (col.gameObject.CompareTag("Coin"))
         {
             //collect coin
+        }
+        else if (col.gameObject.CompareTag("Death"))
+        {
+            playerStats.Die();
+        }
+        else if (col.gameObject.CompareTag("GreenMushroom"))
+        {
+            playerStats.OneUp();
         }
     }
 }

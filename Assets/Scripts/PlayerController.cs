@@ -149,7 +149,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        canJump = true;
+        Vector3 contactPoint = col.GetContact(0).point;
+        Vector3 center = col.otherCollider.bounds.center;
+
+        bool right = contactPoint.x > center.x;
+        bool left = contactPoint.x < center.x;
+        bool bottom = contactPoint.y < center.y;
+        
+        if (!col.collider.isTrigger && (right || left))
+        {
+            currentSpeed = 0;
+        }
+        
+        if(bottom)
+        {
+            canJump = true;
+        }
     }
 
     //https://www.youtube.com/watch?v=7KiK0Aqtmzc

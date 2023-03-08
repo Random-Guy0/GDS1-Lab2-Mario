@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerStats : MonoBehaviour
@@ -49,18 +50,27 @@ public class PlayerStats : MonoBehaviour
     {
         if (powerupState == PowerupState.Small)
         {
-            playerLives.LoseLife();
-            if (playerLives.GetLives() == 0)
-            {
-                Destroy(playerLives.gameObject);
-                //Game over
-            }
+            Die();
         }
         else
         {
             powerupState = PowerupState.Small;
             playerCollider.size = Vector2.one;
             playerCollider.offset = Vector2.zero;
+        }
+    }
+
+    public void Die()
+    {
+        playerLives.LoseLife();
+        if (playerLives.GetLives() == 0)
+        {
+            Destroy(playerLives.gameObject);
+            SceneManager.LoadScene("GameOver");
+        }
+        else
+        {
+            SceneManager.LoadScene("Lives");
         }
     }
 

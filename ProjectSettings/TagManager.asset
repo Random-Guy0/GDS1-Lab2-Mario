@@ -7,6 +7,9 @@ TagManager:
   - RedMushroom
   - GreenMushroom
   - Star
+  - Coin
+  - Enemy
+  - Death
   layers:
   - Default
   - TransparentFX
