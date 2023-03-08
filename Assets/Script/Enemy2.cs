@@ -22,6 +22,8 @@ public class Enemy2 : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     bool hitdir;
+    public Animator animator;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class Enemy2 : MonoBehaviour
         damageBox = transform.GetChild(0).GetComponentsInChildren<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -98,12 +101,12 @@ public class Enemy2 : MonoBehaviour
         curRespawnTime = 0;
         if (shell)
         {
-            sr.color = shellColour;
+            animator.SetBool("Shell", true);
             curSpeed = 0;
         }
         else
         {
-            sr.color = walkColour;
+            animator.SetBool("Shell", false);
             curSpeed = -walkSpeed;
         }
     }

@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     Vector3 effectSpawnOffset = new Vector3(0,-0.25f,0);
     bool hitdir;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
         speed = -speed;
         damageBox = transform.GetChild(0).GetComponentsInChildren<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
         health--;
         if (health <= 0)
         {
+            animator.SetBool("Stomped", true);
             Die(type);
         }
     }
@@ -53,6 +56,7 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case 1:
+
                 Instantiate(jumpDeathEffect,new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y,0), Quaternion.identity).GetComponent<ParticleSystemRenderer>().material = sr.material;
                 break;
             case 2:
@@ -106,6 +110,10 @@ public class Enemy : MonoBehaviour
             {
                 speed = -speed;
             }
+        }
+        if (collision.gameObject.name == "KOUP")
+        {
+            Damage(2);
         }
 
     }
