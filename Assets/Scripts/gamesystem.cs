@@ -16,7 +16,7 @@ public class gamesystem : MonoBehaviour
     public TMP_Text coinScoreText;
     public TMP_Text timeScoreText;
 
-
+    public AudioClip coinSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +43,6 @@ public class gamesystem : MonoBehaviour
         ScoreCounter += score;
         marioScoreText.text = "00" + ScoreCounter.ToString();
         coinScoreText.text = "X " + coinCounter.ToString();
+        AudioSource.PlayClipAtPoint(coinSound, transform.position);
     }
 }
