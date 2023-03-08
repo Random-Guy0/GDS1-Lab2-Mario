@@ -6,7 +6,7 @@ public class StayDoor : MonoBehaviour
 {
     bool ready = false;
     public GameObject player;
-    public GameObject camera;
+    public GameObject camerain;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class StayDoor : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.S))
             {
                 player.transform.position = new Vector2(-6.85f, -9.06f);
-                camera.transform.position = new Vector3(0f, -15.5f, -10.0f);
+                camerain.transform.position = new Vector3(0f, -15.5f, -10.0f);
             }
         }
     }

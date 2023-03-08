@@ -5,7 +5,7 @@ using UnityEngine;
 public class PipeWorldExit : MonoBehaviour
 {
     public GameObject player;
-    public GameObject camera;
+    public GameObject cameraout;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class PipeWorldExit : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             player.transform.position = new Vector2(150.5f, 0.25f);
-            camera.transform.position = new Vector3(150.5f, 2.45f, -10.0f);
+            cameraout.transform.position = new Vector3(150.5f, 2.45f, -10.0f);
         }
     }
 }
