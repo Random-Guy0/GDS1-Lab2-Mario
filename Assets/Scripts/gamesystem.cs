@@ -25,7 +25,7 @@ public class gamesystem : MonoBehaviour
         seconds = 300;
 
         marioScoreText.text = "00" + ScoreCounter.ToString();
-        coinScoreText.text = "X" + coinCounter.ToString();
+        coinScoreText.text = "X " + coinCounter.ToString();
         timeScoreText.text = "" + seconds.ToString();
     }
 
@@ -41,7 +41,7 @@ public class gamesystem : MonoBehaviour
     {
         coinCounter += coin;
         ScoreCounter += score;
-        marioScoreText.text = "00" + score.ToString();
-        coinScoreText.text = "" + coin.ToString();
+        marioScoreText.text = "00" + ScoreCounter.ToString();
+        coinScoreText.text = "X " + coinCounter.ToString();
     }
 }
