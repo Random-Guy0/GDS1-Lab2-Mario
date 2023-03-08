@@ -21,6 +21,7 @@ public class StayDoor : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("ready to leave");
+            //load finish scene;
         }
     }
 }
