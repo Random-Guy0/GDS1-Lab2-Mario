@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     private float updatedPos;
 
+    public AudioClip jumpSoundSmall;
+
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
@@ -129,6 +131,7 @@ public class PlayerController : MonoBehaviour
             currentlyJumping = true;
             canJump = false;
             jumpRequest = true;
+            AudioSource.PlayClipAtPoint(jumpSoundSmall, transform.position);
         }
         else if (context.canceled)
         {

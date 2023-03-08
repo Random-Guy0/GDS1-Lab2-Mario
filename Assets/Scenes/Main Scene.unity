@@ -9876,6 +9876,7 @@ MonoBehaviour:
   marioScoreText: {fileID: 1803994949}
   coinScoreText: {fileID: 88952750}
   timeScoreText: {fileID: 451070354}
+  coinSound: {fileID: 8300000, guid: c0da757bc12d1e24ab0a9f288f9f3714, type: 3}
 --- !u!4 &834471820
 Transform:
   m_ObjectHideFlags: 0
@@ -14111,6 +14112,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c3796b06842a5c441b68fb3fa2e825e6, type: 3}
+    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: jumpSoundSmall
+      value: 
+      objectReference: {fileID: 8300000, guid: c3796b06842a5c441b68fb3fa2e825e6, type: 3}
     - target: {fileID: 8620382187820494172, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
       propertyPath: m_RootOrder
       value: 9
