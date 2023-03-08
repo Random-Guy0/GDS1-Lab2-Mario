@@ -10,11 +10,13 @@ public class Enemy2 : MonoBehaviour
     float curSpeed;
     public float RespawnTime;
     float curRespawnTime;
-    public Color walkColour;
-    public Color shellColour;
+    public Sprite walkColour;
+    public Sprite shellColour;
     public LayerMask lm;
+    public GameObject deathEffect;
     public GameObject fireDeathEffect;
     Vector3 effectSpawnOffset = new Vector3(0, -0.25f, 0);
+    Vector3 viewPos;
     public RaycastHit2D[] results;
     bool shell = false;
     bool move = false;
@@ -38,20 +40,24 @@ public class Enemy2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!shell)
+        viewPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (0 <= viewPos.x && viewPos.x <= 1 && 0 <= viewPos.y && viewPos.y <= 1)
         {
-            transform.Translate(new Vector3(curSpeed * Time.deltaTime, 0, 0));
-        }
-        else if (move)
-        {
-            transform.Translate(new Vector3(curSpeed * Time.deltaTime, 0, 0));
-        }
-        else if (!move)
-        {
-            curRespawnTime += Time.deltaTime;
-            if (curRespawnTime >= RespawnTime)
+            if (!shell)
             {
-                ShellMode();
+                transform.Translate(new Vector3(curSpeed * Time.deltaTime, 0, 0));
+            }
+            else if (move)
+            {
+                transform.Translate(new Vector3(curSpeed * Time.deltaTime, 0, 0));
+            }
+            else if (!move)
+            {
+                curRespawnTime += Time.deltaTime;
+                if (curRespawnTime >= RespawnTime)
+                {
+                    ShellMode();
+                }
             }
         }
     }
@@ -91,6 +97,16 @@ public class Enemy2 : MonoBehaviour
                     Instantiate(fireDeathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, -90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
                 }
                 break;
+            case 3:
+                if (hitdir)
+                {
+                    Instantiate(deathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, 90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                else
+                {
+                    Instantiate(deathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, -90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                break;
             default:
                 break;
         }
@@ -116,6 +132,15 @@ public class Enemy2 : MonoBehaviour
     void ShellMove(bool direction)
     {
         move = !move;
+        if (move)
+        {
+            tag = "MovingShell";
+        }
+        else
+        {
+            tag = "Enemy";
+        }
+        
         curRespawnTime = 0;
         if (direction)
         {
@@ -198,6 +223,40 @@ public class Enemy2 : MonoBehaviour
                     hitdir = true;
                 }
                 Damage(2);
+            }
+            else if (collision.CompareTag("MovingShell"))
+            {
+                if (shell)
+                {
+                    if (collision.transform.position.x < transform.position.x)
+                    {
+                        curSpeed = Mathf.Abs(curSpeed);
+                    }
+                    else if (collision.transform.position.x > transform.position.x)
+                    {
+                        curSpeed = -Mathf.Abs(curSpeed);
+                    }
+                    else if (collision.transform.position.x == transform.position.x)
+                    {
+                        curSpeed = Mathf.Abs(curSpeed);
+                    }
+                }
+                else
+                {
+                    if (collision.transform.position.x < transform.position.x)
+                    {
+                        hitdir = true;
+                    }
+                    else if (collision.transform.position.x > transform.position.x)
+                    {
+                        hitdir = false;
+                    }
+                    else if (collision.transform.position.x == transform.position.x)
+                    {
+                        hitdir = true;
+                    }
+                    Damage(3);
+                }
             }
         }
         if (collision.gameObject.name == "edge")

@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     public int health;
     public float speed;
     public GameObject jumpDeathEffect;
+    public GameObject deathEffect;
     public GameObject fireDeathEffect;
     public LayerMask lm;
     public RaycastHit2D[] results;
+    Vector3 viewPos;
     SpriteRenderer sr;
     Collider2D[] damageBox;
     Rigidbody2D rb;
@@ -29,7 +31,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
+        viewPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (0 <= viewPos.x && viewPos.x <= 1 && 0 <= viewPos.y && viewPos.y <= 1)
+        {
+            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        }
+        
     }
     bool IsPlayerTouching(Collider2D player)
     {
@@ -67,6 +74,16 @@ public class Enemy : MonoBehaviour
                 else
                 {
                     Instantiate(fireDeathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, -90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                break;
+            case 3:
+                if (hitdir)
+                {
+                    Instantiate(deathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, 90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                else
+                {
+                    Instantiate(deathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, -90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
                 }
                 break;
             default:
