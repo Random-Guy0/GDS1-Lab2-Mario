@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private int fireballCount = 0;
 
+    public AudioClip jumpSoundSmall;
+    public AudioClip jumpSoundSuper;
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
@@ -130,6 +132,7 @@ public class PlayerController : MonoBehaviour
             currentlyJumping = true;
             canJump = false;
             jumpRequest = true;
+            AudioSource.PlayClipAtPoint(jumpSoundSmall, transform.position);
         }
         else if (context.canceled)
         {
@@ -143,7 +146,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
             jumpRequest = false;
+            
         }
+        
         BetterJump();
     }
 
@@ -171,9 +176,11 @@ public class PlayerController : MonoBehaviour
     //https://www.youtube.com/watch?v=acBCegN60kw
     private void BetterJump()
     {
+        
         if (rb.velocity.y < 0)
         {
             rb.gravityScale = fallMultiplier;
+            
         }
         else if (rb.velocity.y > 0 && !currentlyJumping)
         {
@@ -182,6 +189,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.gravityScale = 1f;
+            
         }
     }
 
