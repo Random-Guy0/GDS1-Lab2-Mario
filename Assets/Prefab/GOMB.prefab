@@ -112,7 +112,7 @@ Transform:
   - {fileID: 8847809700703193247}
   - {fileID: 8847809702661496875}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8847809700964003960
 SpriteRenderer:
@@ -180,7 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   speed: 1
-  effect: {fileID: 7388462929946950468, guid: 0c5b1f1982a8e9a4b83a21e36aa4a7fe, type: 3}
+  jumpDeathEffect: {fileID: 7388462929946950468, guid: 0c5b1f1982a8e9a4b83a21e36aa4a7fe, type: 3}
+  fireDeathEffect: {fileID: 3571388264331059245, guid: d63917b5c39fb414b9bd45f76a1027fc, type: 3}
   lm:
     serializedVersion: 2
     m_Bits: 55
