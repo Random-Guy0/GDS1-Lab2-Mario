@@ -7,23 +7,25 @@ using UnityEngine.Serialization;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D playerCollider;
-    [SerializeField] private int lives;
-    
+
+    private PlayerLives playerLives;
+
     private PowerupState powerupState;
 
     private void Start()
     {
         powerupState = PowerupState.Small;
+        playerLives = FindObjectOfType<PlayerLives>();
     }
 
     public void OneUp()
     {
-        lives++;
+        playerLives.OneUp();
     }
 
     public int GetLives()
     {
-        return lives;
+        return playerLives.GetLives();
     }
 
     public void CollectPowerup()
@@ -47,9 +49,10 @@ public class PlayerStats : MonoBehaviour
     {
         if (powerupState == PowerupState.Small)
         {
-            lives--;
-            if (lives == 0)
+            playerLives.LoseLife();
+            if (playerLives.GetLives() == 0)
             {
+                Destroy(playerLives.gameObject);
                 //Game over
             }
         }

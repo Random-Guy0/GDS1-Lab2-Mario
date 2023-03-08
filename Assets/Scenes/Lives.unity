@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
+  livesText: {fileID: 1602654972}
 --- !u!1 &332491911
 GameObject:
   m_ObjectHideFlags: 0
