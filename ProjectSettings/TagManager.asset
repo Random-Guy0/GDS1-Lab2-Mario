@@ -13,7 +13,6 @@ TagManager:
   - Fireball
   - Map
   - Pipe
-  - MovingShell
   layers:
   - Default
   - TransparentFX
