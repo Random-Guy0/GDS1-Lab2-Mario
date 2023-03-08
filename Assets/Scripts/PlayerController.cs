@@ -43,12 +43,14 @@ public class PlayerController : MonoBehaviour
 
     private int fireballCount = 0;
 
+    private float updatedPos;
+
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
         currentSpeedIncreaseFactor = walkSpeedIncreaseFactor;
         currentSpeedDecreaseFactor = walkSpeedDecreaseFactor;
-        
+
         mainCamera = Camera.main;
     }
 
@@ -112,15 +114,12 @@ public class PlayerController : MonoBehaviour
         
         Vector3 newPos = transform.position;
         newPos.x += currentSpeed * Time.deltaTime;
-
-        if (mainCamera.WorldToViewportPoint(Vector3.right * (newPos.x - 0.5f)).x >= 0.0)
+        
+        if (mainCamera.WorldToViewportPoint(Vector3.right * (newPos.x - 0.5f)).x < 0)
         {
-            transform.position = newPos;
+            currentSpeed = 0.1f;
         }
-        else
-        {
-            currentSpeed = 0;
-        }
+        updatedPos = currentSpeed;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -139,6 +138,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector2 newPos = rb.position;
+        newPos.x += updatedPos * Time.deltaTime;
+        rb.position = newPos;
+        
         if (jumpRequest)
         {
             rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
@@ -155,8 +158,9 @@ public class PlayerController : MonoBehaviour
         bool right = contactPoint.x > center.x;
         bool left = contactPoint.x < center.x;
         bool bottom = contactPoint.y < center.y;
+        bool top = contactPoint.y > center.y;
         
-        if (!col.collider.isTrigger && (right || left))
+        if (!col.collider.isTrigger && ((right || left) && !bottom && !top))
         {
             currentSpeed = 0;
         }
@@ -192,7 +196,16 @@ public class PlayerController : MonoBehaviour
         {
             if (playerStats.GetPowerupState() == PowerupState.Flower && fireballCount < 3)
             {
-                Instantiate(fireball, transform.position, Quaternion.identity);
+                if (transform.eulerAngles.y != 0)
+                {
+                    GameObject newFireball = Instantiate(fireball, new Vector3(transform.position.x - 1.05f, transform.position.y, transform.position.z), Quaternion.identity);
+                    newFireball.GetComponent<FireballController>().SetDirection(-1.0f);
+                }
+                else
+                {
+                    GameObject newFireball = Instantiate(fireball, new Vector3(transform.position.x + 1.05f, transform.position.y, transform.position.z), Quaternion.identity);
+                    newFireball.GetComponent<FireballController>().SetDirection(1.0f);
+                }
                 fireballCount++;
                 Invoke("RefreshFireball", fireballDelay);
             }

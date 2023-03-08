@@ -13,15 +13,22 @@ public class FireballController : MonoBehaviour
 
     private Camera mainCamera;
 
+    private float direction = 0;
+
     private void Start()
     {
         mainCamera = Camera.main;
     }
 
+    public void SetDirection(float newDirection)
+    {
+        direction = newDirection;
+    }
+
     private void FixedUpdate()
     {
         Vector2 velocity = rb.velocity;
-        velocity.x = moveSpeed;
+        velocity.x = moveSpeed * direction;
         rb.velocity = velocity;
 
         if (canBounce)
@@ -42,14 +49,27 @@ public class FireballController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        Vector3 contactPoint = col.GetContact(0).point;
+        Vector3 center = col.otherCollider.bounds.center;
+
+        bool right = contactPoint.x > center.x;
+        bool left = contactPoint.x < center.x;
+        bool bottom = contactPoint.y < center.y;
+        bool top = contactPoint.y > center.y;
+        
         if (col.gameObject.CompareTag("Enemy"))
         {
             //kill enemy
             Destroy(gameObject);
         }
-        else if(!col.gameObject.CompareTag("Player") && transform.position.y > col.transform.position.y)
+        else if(!col.gameObject.CompareTag("Player") && bottom)
         {
             canBounce = true;
+        }
+        
+        if (!canBounce || ((right || left) && !bottom && !top))
+        {
+            Destroy(gameObject);
         }
     }
 }

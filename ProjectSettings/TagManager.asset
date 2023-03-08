@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Enemy
   - Death
+  - Fireball
   layers:
   - Default
   - TransparentFX
