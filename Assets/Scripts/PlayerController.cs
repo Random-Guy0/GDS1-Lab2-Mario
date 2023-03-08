@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -45,6 +46,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
+    public int statement = 1;
+    public AnimatorController small;
+    public AnimatorController large;
+    public AnimatorController fire;
+
     private void Start()
     {
         maxSpeed = walkMaxSpeed;
@@ -78,6 +84,8 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         animator.SetFloat("Speed", Mathf.Abs(moveDir));
+        animator.SetFloat("BigSpeed", Mathf.Abs(moveDir));
+        animator.SetFloat("FireSpeed", Mathf.Abs(moveDir));
     }
 
     private void Move()
@@ -136,6 +144,8 @@ public class PlayerController : MonoBehaviour
             canJump = false;
             jumpRequest = true;
             animator.SetBool("IsJumping", true);
+            animator.SetBool("BigJump", true);
+            animator.SetBool("FireJump", true);
         }
         else if (context.canceled)
         {
@@ -172,6 +182,8 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
             animator.SetBool("IsJumping", false);
+            animator.SetBool("BigJump", false);
+            animator.SetBool("FireJump", false);
         }
     }
 

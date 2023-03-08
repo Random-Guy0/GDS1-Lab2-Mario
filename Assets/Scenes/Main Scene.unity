@@ -14851,6 +14851,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -973364680, guid: 860c0fbf69d6c0f40a010a45809a59c8, type: 3}
+    - target: {fileID: 1895605330624230674, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: fire
+      value: 
+      objectReference: {fileID: 9100000, guid: cd9e993bb3240fd4998a9118ff661f7a, type: 2}
+    - target: {fileID: 1895605330624230674, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: large
+      value: 
+      objectReference: {fileID: 9100000, guid: 467d7bfcdb7fbae45a5ffb8e684edefa, type: 2}
+    - target: {fileID: 1895605330624230674, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: small
+      value: 
+      objectReference: {fileID: 9100000, guid: ae576fcae52d4e6408a11ded37cf54ad, type: 2}
+    - target: {fileID: 1895605330624230674, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 7391997976822502368}
     - target: {fileID: 3898659671408187985, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 1.0625
@@ -14867,6 +14883,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: fire
+      value: 
+      objectReference: {fileID: 9100000, guid: cd9e993bb3240fd4998a9118ff661f7a, type: 2}
+    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: large
+      value: 
+      objectReference: {fileID: 9100000, guid: 467d7bfcdb7fbae45a5ffb8e684edefa, type: 2}
+    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
+      propertyPath: small
+      value: 
+      objectReference: {fileID: 9100000, guid: ae576fcae52d4e6408a11ded37cf54ad, type: 2}
     - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
       propertyPath: animator
       value: 
