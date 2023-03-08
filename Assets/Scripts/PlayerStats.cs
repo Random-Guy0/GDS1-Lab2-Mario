@@ -68,10 +68,6 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
     }
-    IEnumerator waiter()
-    {
-        yield return new WaitForSecondsRealtime(5);
-    }
 
     public void TakeDamage()
     {
