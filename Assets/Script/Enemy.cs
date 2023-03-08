@@ -99,6 +99,15 @@ public class Enemy : MonoBehaviour
             }
             Damage(2);
         }
+        if(collision.gameObject.name == "edge")
+        {
+            results = Physics2D.BoxCastAll(transform.position, transform.localScale, 0, new Vector2(speed, 0).normalized, 0.5f, lm);
+            if (results.Length > 0)
+            {
+                speed = -speed;
+            }
+        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -112,6 +121,7 @@ public class Enemy : MonoBehaviour
             Damage(0);
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position + (new Vector3(speed, 0,0).normalized * 0.5f), transform.localScale);

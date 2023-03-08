@@ -151,6 +151,7 @@ public class Enemy2 : MonoBehaviour
                 }
                 Damage(2);
             }
+
         }
         else
         {
@@ -191,6 +192,14 @@ public class Enemy2 : MonoBehaviour
                     hitdir = true;
                 }
                 Damage(2);
+            }
+        }
+        if (collision.gameObject.name == "edge")
+        {
+            results = Physics2D.BoxCastAll(transform.position, transform.localScale, 0, new Vector2(curSpeed, 0).normalized, 0.5f, lm);
+            if (results.Length > 0)
+            {
+                curSpeed = -curSpeed;
             }
         }
     }

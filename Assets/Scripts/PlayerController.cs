@@ -49,10 +49,6 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSoundSmall;
     public Animator animator;
 
-    public int statement = 1;
-    public AnimatorController small;
-    public AnimatorController large;
-    public AnimatorController fire;
 
     private void Start()
     {
