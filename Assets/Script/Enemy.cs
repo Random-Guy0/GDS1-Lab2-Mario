@@ -6,15 +6,19 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public float speed;
-    public GameObject effect;
+    public GameObject jumpDeathEffect;
+    public GameObject fireDeathEffect;
     public LayerMask lm;
     public RaycastHit2D[] results;
+    SpriteRenderer sr;
     Collider2D[] damageBox;
     Rigidbody2D rb;
     Vector3 effectSpawnOffset = new Vector3(0,-0.25f,0);
+    bool hitdir;
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         speed = -speed;
         damageBox = transform.GetChild(0).GetComponentsInChildren<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -49,7 +53,17 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case 1:
-                Instantiate(effect,new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y,0), Quaternion.identity);
+                Instantiate(jumpDeathEffect,new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y,0), Quaternion.identity).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                break;
+            case 2:
+                if (hitdir)
+                {
+                    Instantiate(fireDeathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, 90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                else
+                {
+                    Instantiate(fireDeathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, -90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
                 break;
             default:
                 break;
@@ -68,6 +82,22 @@ public class Enemy : MonoBehaviour
             {
                 Debug.Log(name + ": deal damage");
             }
+        }
+        else if (collision.CompareTag("Fireball"))
+        {
+            if (collision.transform.position.x < transform.position.x)
+            {
+                hitdir = true;
+            }
+            else if (collision.transform.position.x > transform.position.x)
+            {
+                hitdir = false;
+            }
+            else if (collision.transform.position.x == transform.position.x)
+            {
+                hitdir = true;
+            }
+            Damage(2);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

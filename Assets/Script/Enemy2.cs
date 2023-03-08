@@ -13,12 +13,15 @@ public class Enemy2 : MonoBehaviour
     public Color walkColour;
     public Color shellColour;
     public LayerMask lm;
+    public GameObject fireDeathEffect;
+    Vector3 effectSpawnOffset = new Vector3(0, -0.25f, 0);
     public RaycastHit2D[] results;
     bool shell = false;
     bool move = false;
     Collider2D[] damageBox;
     Rigidbody2D rb;
     SpriteRenderer sr;
+    bool hitdir;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +77,16 @@ public class Enemy2 : MonoBehaviour
             case 1:
                 ShellMode();
                 return;
+            case 2:
+                if (hitdir)
+                {
+                    Instantiate(fireDeathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, 90,90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                else
+                {
+                    Instantiate(fireDeathEffect, new Vector3(transform.position.x + effectSpawnOffset.x, transform.position.y + effectSpawnOffset.y, 0), Quaternion.Euler(new Vector3(-50, -90, 90))).GetComponent<ParticleSystemRenderer>().material = sr.material;
+                }
+                break;
             default:
                 break;
         }
@@ -122,6 +135,22 @@ public class Enemy2 : MonoBehaviour
                     Debug.Log(name + ": deal damage");
                 }
             }
+            else if (collision.CompareTag("Fireball"))
+            {
+                if (collision.transform.position.x < transform.position.x)
+                {
+                    hitdir = true;
+                }
+                else if (collision.transform.position.x > transform.position.x)
+                {
+                    hitdir = false;
+                }
+                else if (collision.transform.position.x == transform.position.x)
+                {
+                    hitdir = true;
+                }
+                Damage(2);
+            }
         }
         else
         {
@@ -146,6 +175,22 @@ public class Enemy2 : MonoBehaviour
                 {
                     Debug.Log(name + ": deal damage");
                 }
+            }
+            else if (collision.CompareTag("Fireball"))
+            {
+                if (collision.transform.position.x < transform.position.x)
+                {
+                    hitdir = true;
+                }
+                else if (collision.transform.position.x > transform.position.x)
+                {
+                    hitdir = false;
+                }
+                else if (collision.transform.position.x == transform.position.x)
+                {
+                    hitdir = true;
+                }
+                Damage(2);
             }
         }
     }
