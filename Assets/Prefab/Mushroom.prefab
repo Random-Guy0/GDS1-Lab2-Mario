@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6840732422041813279}
   - component: {fileID: 6840732422041813273}
   - component: {fileID: 6840732422041813278}
+  - component: {fileID: -694453678134121204}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: RedMushroom
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 118691732, guid: 860c0fbf69d6c0f40a010a45809a59c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -208,3 +209,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-694453678134121204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840732422041813248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a780b38d30fbffb48b69c79b9cfe3d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  lm:
+    serializedVersion: 2
+    m_Bits: 0
