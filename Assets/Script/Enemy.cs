@@ -106,7 +106,11 @@ public class Enemy : MonoBehaviour
         if (results.Length>0)
         {
             speed = -speed;
-        }  
+        }
+        if (collision.transform.CompareTag("Death"))
+        {
+            Damage(0);
+        }
     }
     private void OnDrawGizmos()
     {

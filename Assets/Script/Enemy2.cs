@@ -201,6 +201,10 @@ public class Enemy2 : MonoBehaviour
         {
             curSpeed = -curSpeed;
         }
+        if (collision.transform.CompareTag("Death"))
+        {
+            Damage(0);
+        }
     }
     private void OnDrawGizmos()
     {
