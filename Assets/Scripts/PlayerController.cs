@@ -92,12 +92,13 @@ public class PlayerController : MonoBehaviour
             if (currentSpeed < maxSpeed)
             {
                 currentSpeed += currentSpeedIncreaseFactor * Time.deltaTime * moveDir;
-                if (Mathf.Abs(currentSpeed) > maxSpeed)
+                if (currentSpeed * moveDir > maxSpeed)
                 {
                     currentSpeed = maxSpeed * moveDir;
                 }
             }
-            else if (currentSpeed > maxSpeed)
+            //remove * moveDir for a fun time
+            else if (currentSpeed * moveDir > maxSpeed)
             {
                 currentSpeed -= currentSpeedDecreaseFactor * Time.deltaTime * moveDir;
             }
