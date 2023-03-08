@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Death
   - Fireball
+  - Map
+  - Pipe
   layers:
   - Default
   - TransparentFX
