@@ -16680,46 +16680,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1707114601427397003, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -973364680, guid: 860c0fbf69d6c0f40a010a45809a59c8, type: 3}
-    - target: {fileID: 3898659671408187985, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_Size.x
-      value: 0.8198371
-      objectReference: {fileID: 0}
-    - target: {fileID: 3898659671408187985, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_Size.y
-      value: 0.9953804
-      objectReference: {fileID: 0}
-    - target: {fileID: 3898659671408187985, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.0023097992
-      objectReference: {fileID: 0}
-    - target: {fileID: 3898659671408187985, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0023097992
-      objectReference: {fileID: 0}
-    - target: {fileID: 3898659671408187985, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.8125
-      objectReference: {fileID: 0}
-    - target: {fileID: 7600503334475721287, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8620382187820494169, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: coinSound
-      value: 
-      objectReference: {fileID: 8300000, guid: c3796b06842a5c441b68fb3fa2e825e6, type: 3}
-    - target: {fileID: 8620382187820494171, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
-      propertyPath: jumpSoundSmall
-      value: 
-      objectReference: {fileID: 8300000, guid: c3796b06842a5c441b68fb3fa2e825e6, type: 3}
     - target: {fileID: 8620382187820494172, guid: 7cb1a76ec1ae402419fd8f6edc872a2e, type: 3}
       propertyPath: m_RootOrder
       value: 10
