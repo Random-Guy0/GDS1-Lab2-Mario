@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -15,9 +9,9 @@ public class PlayerStats : MonoBehaviour
 
     public PowerupState powerupState;
 
-    public AnimatorController small;
-    public AnimatorController large;
-    public AnimatorController fire;
+    public RuntimeAnimatorController small;
+    public RuntimeAnimatorController large;
+    public RuntimeAnimatorController fire;
     public Animator animator;
 
     private void Start()
