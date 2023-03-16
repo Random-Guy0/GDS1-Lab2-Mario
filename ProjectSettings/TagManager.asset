@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RedMushroom
+  - GreenMushroom
+  - Star
+  - Coin
+  - Enemy
+  - Death
+  - Fireball
+  - Map
+  - Pipe
+  - MovingShell
   layers:
   - Default
   - TransparentFX
@@ -11,8 +21,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Colision
+  - Player
   - 
   - 
   - 
